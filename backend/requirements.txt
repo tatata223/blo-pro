@@ -1,0 +1,12 @@
+Django==4.2.7
+djangorestframework==3.14.0
+django-cors-headers==4.3.1
+python-decouple==3.8
+weasyprint>=60.0
+requests>=2.31.0
+# Опциональные зависимости (раскомментируйте при необходимости):
+# channels>=4.0.0  # Для WebSocket чата
+# channels-redis>=4.1.0  # Для WebSocket чата
+# cryptography>=41.0.0  # Для шифрования заметок
+# Pillow  # Для поддержки изображений (аватары)
+

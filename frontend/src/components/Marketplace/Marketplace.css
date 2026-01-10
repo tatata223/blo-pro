@@ -1,0 +1,122 @@
+.marketplace {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.marketplace-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.marketplace-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.marketplace-upload-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-neumorphic-out);
+  background: var(--primary-color);
+  color: white;
+}
+
+.marketplace-upload-btn:hover {
+  background: var(--accent-color);
+  box-shadow: var(--shadow-neumorphic-soft);
+}
+
+.marketplace-filters {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.marketplace-search {
+  margin-bottom: 16px;
+}
+
+.marketplace-search-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--bg-secondary);
+  color: var(--text-color);
+  transition: var(--transition);
+  box-shadow: var(--shadow-neumorphic-in);
+}
+
+.marketplace-search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.marketplace-filter-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-neumorphic-in);
+}
+
+.filter-tab:hover {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.filter-tab.active {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.marketplace-loading,
+.marketplace-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+.marketplace-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .marketplace {
+    padding: 16px;
+  }
+
+  .marketplace-grid {
+    grid-template-columns: 1fr;
+  }
+}

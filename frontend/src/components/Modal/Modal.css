@@ -1,0 +1,135 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 32px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: var(--shadow-neumorphic-out);
+  animation: slideUp 0.3s ease;
+  position: relative;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 16px 0;
+  text-align: center;
+}
+
+.modal-message {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin: 0 0 32px 0;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.modal-btn {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-neumorphic-out);
+  min-width: 120px;
+}
+
+.modal-btn-cancel {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.modal-btn-cancel:hover {
+  box-shadow: var(--shadow-neumorphic-soft);
+  transform: translateY(-2px);
+}
+
+.modal-btn-cancel:active {
+  box-shadow: var(--shadow-neumorphic-pressed);
+  transform: translateY(0);
+}
+
+.modal-btn-confirm {
+  background: var(--card-bg);
+  color: var(--danger-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-btn-confirm::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--danger-color);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.modal-btn-confirm:hover {
+  box-shadow: var(--shadow-neumorphic-soft);
+  transform: translateY(-2px);
+}
+
+.modal-btn-confirm:hover::before {
+  opacity: 0.1;
+}
+
+.modal-btn-confirm:active {
+  box-shadow: var(--shadow-neumorphic-pressed);
+  transform: translateY(0);
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,112 @@
+.sidebar-form {
+  margin-bottom: 16px;
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-neumorphic-in);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-bottom: 12px;
+  transition: box-shadow 0.2s ease;
+  background: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: var(--shadow-neumorphic-in);
+}
+
+.form-input:focus {
+  outline: none;
+  box-shadow: var(--shadow-neumorphic-pressed);
+}
+
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-save,
+.btn-cancel {
+  flex: 1;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: var(--shadow-neumorphic-out);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-bg);
+}
+
+.btn-save {
+  color: #22C55E;
+}
+
+.btn-save:hover:not(:disabled) {
+  box-shadow: var(--shadow-neumorphic-soft);
+}
+
+.btn-save:active:not(:disabled) {
+  box-shadow: var(--shadow-neumorphic-pressed);
+}
+
+.btn-save:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-save svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-cancel {
+  color: #EF4444;
+}
+
+.btn-cancel:hover:not(:disabled) {
+  box-shadow: var(--shadow-neumorphic-soft);
+}
+
+.btn-cancel:active:not(:disabled) {
+  box-shadow: var(--shadow-neumorphic-pressed);
+}
+
+.btn-cancel:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-cancel svg {
+  width: 16px;
+  height: 16px;
+}
+
+
+
+
+

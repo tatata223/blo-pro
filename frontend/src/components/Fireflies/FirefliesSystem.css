@@ -1,0 +1,64 @@
+.fireflies-system {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.fireflies-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 20px 0;
+}
+
+.fireflies-loading,
+.fireflies-empty {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-secondary);
+}
+
+.fireflies-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.firefly-item {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow-neumorphic-out);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.firefly-content {
+  flex: 1;
+}
+
+.firefly-sender {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.firefly-message {
+  font-size: 14px;
+  color: var(--text-color);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.firefly-note {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.firefly-time {
+  font-size: 12px;
+  color: var(--text-secondary);
+}

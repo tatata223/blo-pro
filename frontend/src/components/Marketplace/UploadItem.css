@@ -1,0 +1,141 @@
+.upload-item {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.upload-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.upload-item-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.upload-item-close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--bg-secondary);
+  border-radius: 50%;
+  font-size: 24px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-neumorphic-in);
+  transition: var(--transition);
+}
+
+.upload-item-close:hover {
+  background: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.upload-item-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.upload-item-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.upload-item-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.upload-item-input,
+.upload-item-select,
+.upload-item-textarea {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--card-bg);
+  color: var(--text-color);
+  transition: box-shadow 0.2s ease;
+  box-shadow: var(--shadow-neumorphic-in);
+}
+
+.upload-item-input:focus,
+.upload-item-select:focus,
+.upload-item-textarea:focus {
+  outline: none;
+  box-shadow: var(--shadow-neumorphic-pressed);
+}
+
+.upload-item-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.upload-item-file {
+  padding: 8px;
+  border: 1px dashed var(--border-color);
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.upload-item-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.upload-item-cancel-btn,
+.upload-item-submit-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.upload-item-cancel-btn {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-neumorphic-in);
+}
+
+.upload-item-cancel-btn:hover:not(:disabled) {
+  background: var(--card-bg);
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.upload-item-submit-btn {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.upload-item-submit-btn:hover:not(:disabled) {
+  background: var(--accent-color);
+  box-shadow: var(--shadow-neumorphic-soft);
+}
+
+.upload-item-cancel-btn:disabled,
+.upload-item-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

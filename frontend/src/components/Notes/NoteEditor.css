@@ -1,0 +1,382 @@
+.note-editor {
+  background: var(--card-bg);
+  border-radius: 24px;
+  box-shadow: var(--shadow-neumorphic-in);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 32px;
+  position: relative;
+}
+
+.note-editor::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  right: -40px;
+  bottom: -40px;
+  background: var(--bg-secondary);
+  border-radius: 32px;
+  z-index: -1;
+  opacity: 0.7;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .note-editor {
+  background: var(--card-bg);
+}
+
+[data-theme="dark"] .note-editor::after {
+  background: var(--bg-color);
+  opacity: 0.5;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.editor-header {
+  padding: 16px 20px;
+  border-bottom: none;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: transparent;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.editor-title {
+  flex: 1;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 20px;
+  font-weight: 600;
+  background: var(--card-bg);
+  color: var(--text-color);
+  transition: box-shadow 0.2s ease;
+  box-shadow: var(--shadow-neumorphic-in);
+}
+
+.editor-title:focus {
+  outline: none;
+  box-shadow: var(--shadow-neumorphic-pressed);
+}
+
+.editor-title::placeholder {
+  color: var(--placeholder-color);
+}
+
+.editor-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+
+.btn-save,
+.btn-cancel {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-neumorphic-out);
+  background: var(--card-bg);
+}
+
+.btn-export {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-neumorphic-out);
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.btn-export:hover:not(:disabled) {
+  box-shadow: var(--shadow-neumorphic-soft);
+}
+
+.btn-export:active:not(:disabled) {
+  box-shadow: var(--shadow-neumorphic-pressed);
+}
+
+.btn-export:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-export svg {
+  width: 24px;
+  height: 24px;
+}
+
+.btn-save {
+  color: #22C55E;
+}
+
+.btn-save:hover:not(:disabled) {
+  box-shadow: var(--shadow-neumorphic-soft);
+}
+
+.btn-save:active:not(:disabled) {
+  box-shadow: var(--shadow-neumorphic-pressed);
+}
+
+.btn-save:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-cancel {
+  color: #EF4444;
+}
+
+.btn-cancel:hover {
+  box-shadow: var(--shadow-neumorphic-soft);
+}
+
+.btn-cancel:active {
+  box-shadow: var(--shadow-neumorphic-pressed);
+}
+
+.btn-save svg,
+.btn-cancel svg {
+  width: 24px;
+  height: 24px;
+}
+
+.editor-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 0;
+  margin-bottom: 20px;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.editor-sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.editor-sidebar-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.editor-sidebar-label svg {
+  width: 16px;
+  height: 16px;
+  color: var(--text-secondary);
+}
+
+.editor-folder-select {
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: var(--shadow-neumorphic-in);
+  transition: box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.editor-folder-select:focus {
+  outline: none;
+  box-shadow: var(--shadow-neumorphic-pressed);
+}
+
+.editor-selected-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.editor-tag-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-color);
+  border-left: 3px solid;
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.editor-tag-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.editor-tag-remove:hover {
+  background: var(--bg-secondary);
+  color: var(--text-color);
+}
+
+.editor-tag-remove svg {
+  width: 12px;
+  height: 12px;
+}
+
+
+@media (max-width: 768px) {
+  .editor-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .note-editor {
+    padding: 16px;
+    margin: 16px auto;
+    border-radius: 20px;
+    max-width: calc(100% - 32px);
+    width: 100%;
+  }
+
+  .note-editor::after {
+    top: -16px;
+    left: -16px;
+    right: -16px;
+    bottom: -16px;
+    border-radius: 28px;
+  }
+  
+  .editor-title {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+
+  .editor-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .btn-save,
+  .btn-cancel,
+  .btn-export {
+    width: 36px;
+    height: 36px;
+  }
+
+  .btn-save svg,
+  .btn-cancel svg,
+  .btn-export svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .editor-sidebar {
+    padding: 16px 0;
+    gap: 16px;
+  }
+
+  .editor-sidebar-label {
+    font-size: 13px;
+  }
+
+  .editor-folder-select {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .editor-selected-tags {
+    gap: 6px;
+  }
+
+  .editor-tag-item {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .note-editor {
+    padding: 12px;
+    margin: 12px auto;
+    border-radius: 16px;
+    min-height: 500px;
+  }
+
+  .note-editor::after {
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
+    border-radius: 24px;
+  }
+
+  .editor-header {
+    padding: 12px 0;
+  }
+
+  .editor-title {
+    font-size: 16px;
+    padding: 8px 10px;
+  }
+
+  .editor-actions {
+    gap: 6px;
+  }
+
+  .btn-save,
+  .btn-cancel,
+  .btn-export {
+    width: 32px;
+    height: 32px;
+  }
+
+  .btn-save svg,
+  .btn-cancel svg,
+  .btn-export svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .editor-sidebar {
+    padding: 12px 0;
+    gap: 12px;
+  }
+}
+
+
+

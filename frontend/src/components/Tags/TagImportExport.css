@@ -1,0 +1,190 @@
+.import-export-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.btn-export,
+.btn-import {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-neumorphic-out);
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.btn-export:hover,
+.btn-import:hover {
+  box-shadow: var(--shadow-neumorphic-soft);
+  transform: translateY(-2px);
+}
+
+.btn-export:active,
+.btn-import:active {
+  box-shadow: var(--shadow-neumorphic-pressed);
+  transform: translateY(0);
+}
+
+.btn-export:disabled,
+.btn-import:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.import-export-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.import-export-content {
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 32px;
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.modal-close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--card-bg);
+  border-radius: 50%;
+  font-size: 24px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-neumorphic-out);
+  transition: var(--transition);
+}
+
+.modal-close:hover {
+  box-shadow: var(--shadow-neumorphic-soft);
+  color: var(--text-color);
+  transform: scale(1.1);
+}
+
+.export-content,
+.import-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.export-content p,
+.import-content p {
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.export-textarea,
+.import-textarea {
+  width: 100%;
+  min-height: 300px;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  font-family: 'SF Mono', Monaco, monospace;
+  font-size: 13px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: var(--shadow-neumorphic-in);
+  resize: vertical;
+  transition: box-shadow 0.2s ease;
+}
+
+.export-textarea:focus,
+.import-textarea:focus {
+  outline: none;
+  box-shadow: var(--shadow-neumorphic-pressed);
+}
+
+.export-actions,
+.import-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.btn-download,
+.btn-copy,
+.btn-import-confirm,
+.btn-cancel {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.btn-download,
+.btn-copy,
+.btn-import-confirm {
+  background: var(--card-bg);
+  color: var(--primary-color);
+}
+
+.btn-download:hover,
+.btn-copy:hover,
+.btn-import-confirm:hover {
+  box-shadow: var(--shadow-neumorphic-soft);
+  transform: translateY(-2px);
+}
+
+.btn-cancel {
+  background: var(--card-bg);
+  color: var(--text-secondary);
+}
+
+.btn-cancel:hover {
+  box-shadow: var(--shadow-neumorphic-soft);
+  color: var(--text-color);
+}
+
+
+
+
+
+
+
+

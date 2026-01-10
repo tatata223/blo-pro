@@ -1,0 +1,138 @@
+.templates-section {
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: none;
+  position: relative;
+}
+
+.templates-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--card-bg);
+  border-radius: 2px;
+  box-shadow: var(--shadow-neumorphic-in);
+}
+
+.templates-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 32px;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.templates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.template-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 28px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-neumorphic-out);
+  border: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 200px;
+  position: relative;
+}
+
+.template-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: var(--shadow-neumorphic-soft);
+}
+
+.template-card:active {
+  box-shadow: var(--shadow-neumorphic-pressed);
+  transform: translateY(-2px) scale(0.98);
+}
+
+.template-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.template-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.template-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 8px 0;
+}
+
+.template-category-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.template-description {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.templates-loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+.templates-empty {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.templates-empty p {
+  color: var(--text-secondary);
+  font-size: 16px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .templates-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  
+  .template-card {
+    min-height: 160px;
+    padding: 20px;
+  }
+  
+  .template-icon {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+

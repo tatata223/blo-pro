@@ -1,0 +1,91 @@
+.notes-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-color);
+  width: 100%;
+  position: relative;
+}
+
+.notes-app-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  margin-top: 0;
+}
+
+.notes-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  background: transparent;
+  min-height: calc(100vh - 56px);
+}
+
+.error-banner {
+  background: var(--card-bg);
+  color: var(--danger-color);
+  padding: 16px 20px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.error-banner button {
+  background: var(--card-bg);
+  color: var(--danger-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: var(--transition);
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.error-banner button:hover {
+  box-shadow: var(--shadow-neumorphic-soft);
+  transform: translateY(-1px);
+}
+
+.error-banner button:active {
+  box-shadow: var(--shadow-neumorphic-pressed);
+  transform: translateY(0);
+}
+
+/* Адаптивный дизайн для мобильных */
+@media (max-width: 1024px) {
+  .notes-main {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .notes-app-content {
+    flex-direction: column;
+  }
+  
+  .notes-main {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .notes-main {
+    padding: 12px;
+  }
+  
+  .notes-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

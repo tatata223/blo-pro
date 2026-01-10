@@ -1,0 +1,25 @@
+.public-notes {
+  width: 100%;
+}
+
+.public-notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.public-notes-loading,
+.public-notes-empty {
+  padding: 40px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .public-notes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+

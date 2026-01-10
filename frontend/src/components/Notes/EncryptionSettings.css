@@ -1,0 +1,188 @@
+.encryption-settings {
+  position: relative;
+}
+
+.encryption-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.encryption-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.encryption-status svg {
+  color: var(--primary-color);
+}
+
+.encryption-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: var(--shadow-neumorphic-out);
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.encryption-btn:hover {
+  background: var(--bg-secondary);
+  box-shadow: var(--shadow-neumorphic-in);
+}
+
+.encrypt-btn {
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.encrypt-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.decrypt-btn {
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+}
+
+.decrypt-btn:hover {
+  background: var(--accent-color);
+  color: white;
+}
+
+.remove-btn {
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.remove-btn:hover {
+  background: var(--error-color, #ff4444);
+  color: white;
+  border-color: var(--error-color, #ff4444);
+}
+
+.encryption-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.encryption-modal-content {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.encryption-modal-content h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 8px 0;
+}
+
+.encryption-modal-hint {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+
+.encryption-form-group {
+  margin-bottom: 16px;
+}
+
+.encryption-form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 6px;
+}
+
+.encryption-form-group input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--bg-secondary);
+  color: var(--text-color);
+  transition: var(--transition);
+  box-shadow: var(--shadow-neumorphic-in);
+}
+
+.encryption-form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.encryption-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.encryption-cancel-btn,
+.encryption-submit-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.encryption-cancel-btn {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-neumorphic-in);
+}
+
+.encryption-cancel-btn:hover:not(:disabled) {
+  background: var(--card-bg);
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.encryption-submit-btn {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.encryption-submit-btn:hover:not(:disabled) {
+  background: var(--accent-color);
+  box-shadow: var(--shadow-neumorphic-soft);
+}
+
+.encryption-cancel-btn:disabled,
+.encryption-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

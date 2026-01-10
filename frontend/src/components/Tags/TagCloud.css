@@ -1,0 +1,67 @@
+.tag-cloud {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow-neumorphic-out);
+  margin-bottom: 24px;
+}
+
+.tag-cloud-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.tag-cloud-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+}
+
+.tag-cloud-item {
+  padding: 8px 16px;
+  border: 2px solid;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+  display: inline-block;
+  user-select: none;
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.tag-cloud-item:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: var(--shadow-neumorphic-soft);
+}
+
+.tag-cloud-item.selected {
+  color: white !important;
+  font-weight: 700;
+  transform: scale(1.1);
+}
+
+.tag-cloud-loading,
+.tag-cloud-empty {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-secondary);
+}
+
+.tag-cloud-empty p {
+  margin: 0;
+  font-size: 16px;
+}
+
+
+
+
+
+
+
+

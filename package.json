@@ -1,0 +1,27 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "Приложение для заметок с Django и React",
+  "scripts": {
+    "start": "./start.sh",
+    "start:backend": "cd backend && source venv/bin/activate && python3 manage.py runserver",
+    "start:frontend": "cd frontend && npm start"
+  },
+  "keywords": [
+    "notes",
+    "django",
+    "react",
+    "web-app"
+  ],
+  "author": "",
+  "license": "MIT"
+}
+
+
+
+
+
+
+
+
+

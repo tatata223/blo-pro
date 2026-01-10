@@ -1,0 +1,73 @@
+.floating-menu-buttons {
+  position: fixed;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.floating-menu-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--card-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.2s ease;
+  box-shadow: var(--shadow-neumorphic-out);
+  pointer-events: auto;
+  opacity: 0;
+  animation: fadeInUp 0.3s ease forwards;
+  position: relative;
+}
+
+.floating-menu-button svg {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.floating-menu-button:hover {
+  box-shadow: var(--shadow-neumorphic-soft);
+}
+
+.floating-menu-button:active {
+  box-shadow: var(--shadow-neumorphic-pressed);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-menu-buttons {
+    right: 12px;
+    gap: 10px;
+  }
+
+  .floating-menu-button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .floating-menu-button svg {
+    width: 16px;
+    height: 16px;
+  }
+}

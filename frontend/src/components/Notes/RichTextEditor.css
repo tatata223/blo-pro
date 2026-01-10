@@ -1,0 +1,482 @@
+.rich-text-editor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: transparent;
+  border-radius: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.quill-editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+.quill-editor .ql-container {
+  flex: 1;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-color);
+  background: transparent;
+  border: none;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-shadow: none;
+  border-radius: 16px;
+  margin: 0;
+  transition: box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.quill-editor .ql-container:focus-within {
+  box-shadow: none;
+}
+
+/* Font styles for Quill - все доступные шрифты */
+.quill-editor .ql-editor {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Системные шрифты */
+.quill-editor .ql-editor[style*="font-family: 'Times New Roman'"] {
+  font-family: 'Times New Roman', serif;
+}
+.quill-editor .ql-editor[style*="font-family: Arial"] {
+  font-family: Arial, sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: Georgia"] {
+  font-family: 'Georgia', serif;
+}
+.quill-editor .ql-editor[style*="font-family: Verdana"] {
+  font-family: 'Verdana', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Courier New'"] {
+  font-family: 'Courier New', monospace;
+}
+.quill-editor .ql-editor[style*="font-family: 'Comic Sans MS'"] {
+  font-family: 'Comic Sans MS', cursive;
+}
+
+/* Google Fonts - Sans Serif */
+.quill-editor .ql-editor[style*="font-family: Roboto"] {
+  font-family: 'Roboto', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Open Sans'"] {
+  font-family: 'Open Sans', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: Lato"] {
+  font-family: 'Lato', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: Montserrat"] {
+  font-family: 'Montserrat', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: Poppins"] {
+  font-family: 'Poppins', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: Raleway"] {
+  font-family: 'Raleway', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: Ubuntu"] {
+  font-family: 'Ubuntu', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Source Sans Pro'"] {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: Oswald"] {
+  font-family: 'Oswald', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'PT Sans'"] {
+  font-family: 'PT Sans', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Roboto Slab'"] {
+  font-family: 'Roboto Slab', serif;
+}
+.quill-editor .ql-editor[style*="font-family: Nunito"] {
+  font-family: 'Nunito', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: Inter"] {
+  font-family: 'Inter', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Work Sans'"] {
+  font-family: 'Work Sans', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'DM Sans'"] {
+  font-family: 'DM Sans', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: Manrope"] {
+  font-family: 'Manrope', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Space Grotesk'"] {
+  font-family: 'Space Grotesk', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Plus Jakarta Sans'"] {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: Outfit"] {
+  font-family: 'Outfit', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: Sora"] {
+  font-family: 'Sora', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: Epilogue"] {
+  font-family: 'Epilogue', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: Figtree"] {
+  font-family: 'Figtree', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Cabinet Grotesk'"] {
+  font-family: 'Cabinet Grotesk', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: Satoshi"] {
+  font-family: 'Satoshi', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Clash Display'"] {
+  font-family: 'Clash Display', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'General Sans'"] {
+  font-family: 'General Sans', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: Switzer"] {
+  font-family: 'Switzer', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: Chillax"] {
+  font-family: 'Chillax', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: Sentient"] {
+  font-family: 'Sentient', sans-serif;
+}
+
+/* Serif шрифты */
+.quill-editor .ql-editor[style*="font-family: 'Playfair Display'"] {
+  font-family: 'Playfair Display', serif;
+}
+.quill-editor .ql-editor[style*="font-family: Merriweather"] {
+  font-family: 'Merriweather', serif;
+}
+.quill-editor .ql-editor[style*="font-family: Lora"] {
+  font-family: 'Lora', serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Crimson Text'"] {
+  font-family: 'Crimson Text', serif;
+}
+.quill-editor .ql-editor[style*="font-family: Fraunces"] {
+  font-family: 'Fraunces', serif;
+}
+.quill-editor .ql-editor[style*="font-family: Recoleta"] {
+  font-family: 'Recoleta', serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'DM Serif Display'"] {
+  font-family: 'DM Serif Display', serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Bodoni Moda'"] {
+  font-family: 'Bodoni Moda', serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Cormorant Garamond'"] {
+  font-family: 'Cormorant Garamond', serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Libre Baskerville'"] {
+  font-family: 'Libre Baskerville', serif;
+}
+.quill-editor .ql-editor[style*="font-family: Cinzel"] {
+  font-family: 'Cinzel', serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Playfair Display SC'"] {
+  font-family: 'Playfair Display SC', serif;
+}
+.quill-editor .ql-editor[style*="font-family: Alegreya"] {
+  font-family: 'Alegreya', serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Alegreya SC'"] {
+  font-family: 'Alegreya SC', serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Crimson Pro'"] {
+  font-family: 'Crimson Pro', serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'EB Garamond'"] {
+  font-family: 'EB Garamond', serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Libre Caslon Text'"] {
+  font-family: 'Libre Caslon Text', serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Old Standard TT'"] {
+  font-family: 'Old Standard TT', serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'PT Serif'"] {
+  font-family: 'PT Serif', serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Source Serif Pro'"] {
+  font-family: 'Source Serif Pro', serif;
+}
+.quill-editor .ql-editor[style*="font-family: Vollkorn"] {
+  font-family: 'Vollkorn', serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Yeseva One'"] {
+  font-family: 'Yeseva One', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: Arvo"] {
+  font-family: 'Arvo', serif;
+}
+.quill-editor .ql-editor[style*="font-family: Bitter"] {
+  font-family: 'Bitter', serif;
+}
+.quill-editor .ql-editor[style*="font-family: Domine"] {
+  font-family: 'Domine', serif;
+}
+.quill-editor .ql-editor[style*="font-family: Lusitana"] {
+  font-family: 'Lusitana', serif;
+}
+.quill-editor .ql-editor[style*="font-family: Spectral"] {
+  font-family: 'Spectral', serif;
+}
+.quill-editor .ql-editor[style*="font-family: Taviraj"] {
+  font-family: 'Taviraj', serif;
+}
+.quill-editor .ql-editor[style*="font-family: Trirong"] {
+  font-family: 'Trirong', serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Zilla Slab'"] {
+  font-family: 'Zilla Slab', serif;
+}
+
+/* Display и декоративные шрифты */
+.quill-editor .ql-editor[style*="font-family: 'Dancing Script'"] {
+  font-family: 'Dancing Script', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: Pacifico"] {
+  font-family: 'Pacifico', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: 'Indie Flower'"] {
+  font-family: 'Indie Flower', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: 'Shadows Into Light'"] {
+  font-family: 'Shadows Into Light', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: 'Amatic SC'"] {
+  font-family: 'Amatic SC', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: Bangers"] {
+  font-family: 'Bangers', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: Lobster"] {
+  font-family: 'Lobster', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: Righteous"] {
+  font-family: 'Righteous', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: Satisfy"] {
+  font-family: 'Satisfy', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: Kalam"] {
+  font-family: 'Kalam', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: Caveat"] {
+  font-family: 'Caveat', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: 'Permanent Marker'"] {
+  font-family: 'Permanent Marker', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: 'Fredoka One'"] {
+  font-family: 'Fredoka One', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: 'Bebas Neue'"] {
+  font-family: 'Bebas Neue', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: Anton"] {
+  font-family: 'Anton', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Fjalla One'"] {
+  font-family: 'Fjalla One', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Russo One'"] {
+  font-family: 'Russo One', sans-serif;
+}
+.quill-editor .ql-editor[style*="font-family: 'Abril Fatface'"] {
+  font-family: 'Abril Fatface', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: Bungee"] {
+  font-family: 'Bungee', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: 'Bungee Shade'"] {
+  font-family: 'Bungee Shade', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: Creepster"] {
+  font-family: 'Creepster', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: Fascinate"] {
+  font-family: 'Fascinate', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: 'Fascinate Inline'"] {
+  font-family: 'Fascinate Inline', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: Monoton"] {
+  font-family: 'Monoton', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: 'Rubik Glitch'"] {
+  font-family: 'Rubik Glitch', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: 'Rubik Moonrocks'"] {
+  font-family: 'Rubik Moonrocks', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: 'Titan One'"] {
+  font-family: 'Titan One', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: Wallpoet"] {
+  font-family: 'Wallpoet', cursive;
+}
+.quill-editor .ql-editor[style*="font-family: 'Zilla Slab Highlight'"] {
+  font-family: 'Zilla Slab Highlight', cursive;
+}
+
+[data-theme="dark"] .quill-editor .ql-container {
+  background: var(--card-bg);
+}
+
+.quill-editor .ql-editor {
+  min-height: 500px;
+  padding: 24px 32px;
+  color: var(--text-color);
+  background: transparent;
+  max-width: 100%;
+  margin: 0;
+  border-radius: 16px;
+  transition: box-shadow 0.2s ease;
+  font-size: 16px;
+  line-height: 1.8;
+  border: none;
+}
+
+[data-theme="dark"] .quill-editor .ql-editor {
+  background: transparent;
+}
+
+.quill-editor .ql-editor.ql-blank::before {
+  color: var(--placeholder-color);
+  font-style: normal;
+}
+
+.quill-editor .ql-toolbar {
+  background: transparent;
+  border: none;
+  border-bottom: none;
+  padding: 8px 0;
+  border-radius: 0;
+  margin-bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.quill-editor .ql-toolbar .ql-stroke {
+  stroke: var(--text-color);
+}
+
+.quill-editor .ql-toolbar .ql-fill {
+  fill: var(--text-color);
+}
+
+.quill-editor .ql-toolbar .ql-picker-label {
+  color: var(--text-color);
+}
+
+.quill-editor .ql-toolbar button {
+  border-radius: 6px;
+  transition: box-shadow 0.2s ease;
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.quill-editor .ql-toolbar button:hover,
+.quill-editor .ql-toolbar button.ql-active {
+  background: var(--card-bg);
+  border-radius: 6px;
+  box-shadow: var(--shadow-neumorphic-soft);
+}
+
+.quill-editor .ql-toolbar .ql-picker-options {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.quill-editor .ql-toolbar .ql-picker-item {
+  color: var(--text-color);
+}
+
+.quill-editor .ql-toolbar .ql-picker-item:hover {
+  background: var(--bg-secondary);
+}
+
+.editor-footer {
+  display: none;
+}
+
+/* Адаптация для темной темы */
+[data-theme="dark"] .quill-editor .ql-toolbar {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .quill-editor .ql-editor {
+  background: var(--card-bg);
+}
+
+[data-theme="dark"] .quill-editor .ql-toolbar .ql-picker-options {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+  .quill-editor .ql-toolbar {
+    padding: 8px 4px;
+    overflow-x: auto;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .quill-editor .ql-toolbar button {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+  }
+
+  .quill-editor .ql-toolbar .ql-formats {
+    margin-right: 4px;
+  }
+  
+  .quill-editor .ql-editor {
+    min-height: 400px;
+    padding: 20px 16px;
+    font-size: 16px;
+  }
+
+  .rich-text-editor {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .quill-editor .ql-toolbar {
+    padding: 6px 2px;
+  }
+
+  .quill-editor .ql-toolbar button {
+    width: 28px;
+    height: 28px;
+    padding: 2px;
+  }
+
+  .quill-editor .ql-toolbar svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .quill-editor .ql-editor {
+    min-height: 350px;
+    padding: 16px 12px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
+

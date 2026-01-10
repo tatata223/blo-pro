@@ -1,0 +1,637 @@
+{
+  "templates": [
+    {
+      "template_name": "Протокол собрания",
+      "category": "Бизнес",
+      "description": "Структурированный шаблон для ведения протоколов собраний с полями для даты, участников, повестки дня и принятых решений",
+      "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM7 10H17V12H7V10ZM7 14H17V16H7V14ZM7 6H17V8H7V6Z\" fill=\"#90EE90\"/></svg>",
+      "tags": ["бизнес", "собрание", "протокол", "официальный"],
+      "fields": [
+        {
+          "name": "дата_проведения",
+          "label": "Дата проведения",
+          "type": "date",
+          "required": true,
+          "placeholder": "Выберите дату"
+        },
+        {
+          "name": "время_начала",
+          "label": "Время начала",
+          "type": "text",
+          "required": true,
+          "placeholder": "ЧЧ:ММ"
+        },
+        {
+          "name": "время_окончания",
+          "label": "Время окончания",
+          "type": "text",
+          "required": false,
+          "placeholder": "ЧЧ:ММ"
+        },
+        {
+          "name": "место_проведения",
+          "label": "Место проведения",
+          "type": "text",
+          "required": true,
+          "placeholder": "Адрес или название помещения"
+        },
+        {
+          "name": "председатель",
+          "label": "Председатель собрания",
+          "type": "text",
+          "required": true,
+          "placeholder": "ФИО председателя"
+        },
+        {
+          "name": "секретарь",
+          "label": "Секретарь",
+          "type": "text",
+          "required": true,
+          "placeholder": "ФИО секретаря"
+        },
+        {
+          "name": "участники",
+          "label": "Участники",
+          "type": "textarea",
+          "required": true,
+          "placeholder": "Список участников (ФИО, должность)"
+        },
+        {
+          "name": "повестка_дня",
+          "label": "Повестка дня",
+          "type": "textarea",
+          "required": true,
+          "placeholder": "Пункты повестки дня"
+        },
+        {
+          "name": "обсуждение",
+          "label": "Обсуждение",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Краткое описание обсуждения"
+        },
+        {
+          "name": "решения",
+          "label": "Решения",
+          "type": "textarea",
+          "required": true,
+          "placeholder": "Принятые решения"
+        }
+      ]
+    },
+    {
+      "template_name": "Список дел",
+      "category": "Планирование",
+      "description": "Эффективный шаблон для планирования задач с разделением по приоритетам (срочные, важные, обычные)",
+      "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z\" fill=\"#FFD700\"/></svg>",
+      "tags": ["задачи", "планирование", "продуктивность"],
+      "fields": [
+        {
+          "name": "дата",
+          "label": "Дата",
+          "type": "date",
+          "required": true,
+          "placeholder": "Выберите дату"
+        },
+        {
+          "name": "срочные_важные",
+          "label": "Срочные и важные задачи",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Список срочных и важных задач"
+        },
+        {
+          "name": "важные",
+          "label": "Важные задачи",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Список важных задач"
+        },
+        {
+          "name": "обычные",
+          "label": "Обычные задачи",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Список обычных задач"
+        },
+        {
+          "name": "заметки",
+          "label": "Дополнительные заметки",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Дополнительные заметки и комментарии"
+        }
+      ]
+    },
+    {
+      "template_name": "Дневник",
+      "category": "Личное",
+      "description": "Персональный шаблон для ведения дневника с разделами для событий дня, мыслей, благодарности и планов",
+      "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM7 10H17V12H7V10ZM7 14H17V16H7V14Z\" fill=\"#90EE90\"/></svg>",
+      "tags": ["дневник", "личное", "рефлексия"],
+      "fields": [
+        {
+          "name": "дата",
+          "label": "Дата",
+          "type": "date",
+          "required": true,
+          "placeholder": "Выберите дату"
+        },
+        {
+          "name": "настроение",
+          "label": "Настроение",
+          "type": "select",
+          "required": false,
+          "placeholder": "Выберите настроение",
+          "options": ["Отличное", "Хорошее", "Нормальное", "Плохое", "Ужасное"]
+        },
+        {
+          "name": "события_дня",
+          "label": "Что произошло сегодня",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Опишите события дня"
+        },
+        {
+          "name": "мысли",
+          "label": "Мои мысли",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Ваши размышления и переживания"
+        },
+        {
+          "name": "благодарность",
+          "label": "За что я благодарен сегодня",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "За что вы благодарны"
+        },
+        {
+          "name": "планы_завтра",
+          "label": "Планы на завтра",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Что планируете сделать завтра"
+        }
+      ]
+    },
+    {
+      "template_name": "Рецепт",
+      "category": "Кулинария",
+      "description": "Детальный шаблон для записи рецептов с ингредиентами, пошаговой инструкцией и полезными советами",
+      "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M8.1 13.34L11 15.45L13.9 13.34C14.5 12.8 15.4 12.8 16 13.34C16.6 13.88 16.6 14.77 16 15.31L11 19.8L6 15.31C5.4 14.77 5.4 13.88 6 13.34C6.6 12.8 7.5 12.8 8.1 13.34ZM11 4.2L16 8.69C16.6 9.23 16.6 10.12 16 10.66C15.4 11.2 14.5 11.2 13.9 10.66L11 8.55L8.1 10.66C7.5 11.2 6.6 11.2 6 10.66C5.4 10.12 5.4 9.23 6 8.69L11 4.2Z\" fill=\"#FFD700\"/></svg>",
+      "tags": ["рецепт", "кулинария", "готовка"],
+      "fields": [
+        {
+          "name": "название_блюда",
+          "label": "Название блюда",
+          "type": "text",
+          "required": true,
+          "placeholder": "Введите название блюда"
+        },
+        {
+          "name": "категория",
+          "label": "Категория",
+          "type": "select",
+          "required": false,
+          "placeholder": "Выберите категорию",
+          "options": ["Завтрак", "Обед", "Ужин", "Десерт", "Закуска", "Напиток"]
+        },
+        {
+          "name": "время_приготовления",
+          "label": "Время приготовления",
+          "type": "text",
+          "required": false,
+          "placeholder": "Например: 30 минут"
+        },
+        {
+          "name": "порций",
+          "label": "Количество порций",
+          "type": "number",
+          "required": false,
+          "placeholder": "Количество порций"
+        },
+        {
+          "name": "сложность",
+          "label": "Сложность",
+          "type": "select",
+          "required": false,
+          "placeholder": "Выберите сложность",
+          "options": ["Легко", "Средне", "Сложно"]
+        },
+        {
+          "name": "ингредиенты",
+          "label": "Ингредиенты",
+          "type": "textarea",
+          "required": true,
+          "placeholder": "Список ингредиентов с количеством"
+        },
+        {
+          "name": "инструкция",
+          "label": "Инструкция по приготовлению",
+          "type": "textarea",
+          "required": true,
+          "placeholder": "Пошаговая инструкция"
+        },
+        {
+          "name": "советы",
+          "label": "Советы и заметки",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Дополнительные советы"
+        }
+      ]
+    },
+    {
+      "template_name": "Рецензия на книгу",
+      "category": "Чтение",
+      "description": "Структурированный шаблон для написания рецензий с оценкой, кратким содержанием и личными впечатлениями",
+      "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM7 10H17V12H7V10ZM7 14H17V16H7V14Z\" fill=\"#90EE90\"/></svg>",
+      "tags": ["книга", "рецензия", "чтение", "литература"],
+      "fields": [
+        {
+          "name": "название_книги",
+          "label": "Название книги",
+          "type": "text",
+          "required": true,
+          "placeholder": "Введите название книги"
+        },
+        {
+          "name": "автор",
+          "label": "Автор",
+          "type": "text",
+          "required": true,
+          "placeholder": "Имя автора"
+        },
+        {
+          "name": "жанр",
+          "label": "Жанр",
+          "type": "text",
+          "required": false,
+          "placeholder": "Жанр книги"
+        },
+        {
+          "name": "дата_прочтения",
+          "label": "Дата прочтения",
+          "type": "date",
+          "required": false,
+          "placeholder": "Когда прочитали"
+        },
+        {
+          "name": "оценка",
+          "label": "Оценка",
+          "type": "select",
+          "required": false,
+          "placeholder": "Ваша оценка",
+          "options": ["1", "2", "3", "4", "5"]
+        },
+        {
+          "name": "краткое_содержание",
+          "label": "Краткое содержание",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Краткое описание сюжета"
+        },
+        {
+          "name": "впечатления",
+          "label": "Мои впечатления",
+          "type": "textarea",
+          "required": true,
+          "placeholder": "Ваши мысли о книге"
+        },
+        {
+          "name": "рекомендация",
+          "label": "Рекомендация",
+          "type": "checkbox",
+          "required": false,
+          "placeholder": "Рекомендую к прочтению"
+        }
+      ]
+    },
+    {
+      "template_name": "Путевые заметки",
+      "category": "Путешествия",
+      "description": "Подробный шаблон для записи впечатлений о путешествиях с информацией о местах, рекомендациях и фотографиях",
+      "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z\" fill=\"#FFD700\"/></svg>",
+      "tags": ["путешествие", "поездка", "впечатления"],
+      "fields": [
+        {
+          "name": "место",
+          "label": "Место",
+          "type": "text",
+          "required": true,
+          "placeholder": "Название места или города"
+        },
+        {
+          "name": "дата_поездки",
+          "label": "Дата поездки",
+          "type": "date",
+          "required": false,
+          "placeholder": "Дата поездки"
+        },
+        {
+          "name": "длительность",
+          "label": "Длительность",
+          "type": "text",
+          "required": false,
+          "placeholder": "Например: 3 дня"
+        },
+        {
+          "name": "посещенные_места",
+          "label": "Посещенные места",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Список посещенных мест"
+        },
+        {
+          "name": "впечатления",
+          "label": "Впечатления",
+          "type": "textarea",
+          "required": true,
+          "placeholder": "Ваши впечатления от поездки"
+        },
+        {
+          "name": "рекомендации",
+          "label": "Рекомендации",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Что стоит посетить, где поесть"
+        },
+        {
+          "name": "фото",
+          "label": "Фотографии",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Описание фотографий или ссылки"
+        }
+      ]
+    },
+    {
+      "template_name": "Проект",
+      "category": "Работа",
+      "description": "Профессиональный шаблон для управления проектами с полями для целей, задач, участников, сроков и бюджета",
+      "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM7 10H17V12H7V10ZM7 14H17V16H7V14Z\" fill=\"#90EE90\"/></svg>",
+      "tags": ["проект", "работа", "планирование", "управление"],
+      "fields": [
+        {
+          "name": "название_проекта",
+          "label": "Название проекта",
+          "type": "text",
+          "required": true,
+          "placeholder": "Введите название проекта"
+        },
+        {
+          "name": "описание",
+          "label": "Описание проекта",
+          "type": "textarea",
+          "required": true,
+          "placeholder": "Краткое описание проекта"
+        },
+        {
+          "name": "дата_начала",
+          "label": "Дата начала",
+          "type": "date",
+          "required": true,
+          "placeholder": "Дата начала проекта"
+        },
+        {
+          "name": "срок_завершения",
+          "label": "Срок завершения",
+          "type": "date",
+          "required": false,
+          "placeholder": "Планируемая дата завершения"
+        },
+        {
+          "name": "статус",
+          "label": "Статус",
+          "type": "select",
+          "required": false,
+          "placeholder": "Текущий статус",
+          "options": ["Планирование", "В работе", "На паузе", "Завершен", "Отменен"]
+        },
+        {
+          "name": "цели",
+          "label": "Цели проекта",
+          "type": "textarea",
+          "required": true,
+          "placeholder": "Основные цели проекта"
+        },
+        {
+          "name": "задачи",
+          "label": "Задачи",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Список задач проекта"
+        },
+        {
+          "name": "участники",
+          "label": "Участники проекта",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Команда проекта"
+        },
+        {
+          "name": "бюджет",
+          "label": "Бюджет",
+          "type": "number",
+          "required": false,
+          "placeholder": "Бюджет проекта"
+        }
+      ]
+    },
+    {
+      "template_name": "Интервью",
+      "category": "Журналистика",
+      "description": "Структурированный шаблон для записи интервью с вопросами, ответами и ключевыми моментами беседы",
+      "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z\" fill=\"#FFD700\"/></svg>",
+      "tags": ["интервью", "журналистика", "беседа"],
+      "fields": [
+        {
+          "name": "интервьюируемый",
+          "label": "Интервьюируемый",
+          "type": "text",
+          "required": true,
+          "placeholder": "ФИО интервьюируемого"
+        },
+        {
+          "name": "должность",
+          "label": "Должность/Род деятельности",
+          "type": "text",
+          "required": false,
+          "placeholder": "Должность или род деятельности"
+        },
+        {
+          "name": "дата_интервью",
+          "label": "Дата интервью",
+          "type": "date",
+          "required": true,
+          "placeholder": "Дата проведения интервью"
+        },
+        {
+          "name": "место",
+          "label": "Место проведения",
+          "type": "text",
+          "required": false,
+          "placeholder": "Место проведения интервью"
+        },
+        {
+          "name": "интервьюер",
+          "label": "Интервьюер",
+          "type": "text",
+          "required": false,
+          "placeholder": "Ваше имя"
+        },
+        {
+          "name": "вопросы_ответы",
+          "label": "Вопросы и ответы",
+          "type": "textarea",
+          "required": true,
+          "placeholder": "Вопрос: ...\nОтвет: ..."
+        },
+        {
+          "name": "ключевые_моменты",
+          "label": "Ключевые моменты",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Основные моменты интервью"
+        },
+        {
+          "name": "заключение",
+          "label": "Заключение",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Выводы и заключение"
+        }
+      ]
+    },
+    {
+      "template_name": "Конспект урока",
+      "category": "Образование",
+      "description": "Удобный шаблон для конспектирования уроков с разделами для понятий, формул, домашних заданий и вопросов",
+      "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M5 13.18V17H18V13.18L12 9L5 13.18ZM12 2L2 7V11C2 16.55 6.03 21.74 12 23C17.97 21.74 22 16.55 22 11V7L12 2Z\" fill=\"#90EE90\"/></svg>",
+      "tags": ["урок", "лекция", "образование", "конспект"],
+      "fields": [
+        {
+          "name": "название_урока",
+          "label": "Название урока/лекции",
+          "type": "text",
+          "required": true,
+          "placeholder": "Название урока или тема лекции"
+        },
+        {
+          "name": "предмет",
+          "label": "Предмет",
+          "type": "text",
+          "required": false,
+          "placeholder": "Название предмета"
+        },
+        {
+          "name": "дата",
+          "label": "Дата",
+          "type": "date",
+          "required": true,
+          "placeholder": "Дата урока"
+        },
+        {
+          "name": "преподаватель",
+          "label": "Преподаватель",
+          "type": "text",
+          "required": false,
+          "placeholder": "ФИО преподавателя"
+        },
+        {
+          "name": "основные_понятия",
+          "label": "Основные понятия",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Ключевые понятия и определения"
+        },
+        {
+          "name": "ключевые_моменты",
+          "label": "Ключевые моменты",
+          "type": "textarea",
+          "required": true,
+          "placeholder": "Основные моменты урока"
+        },
+        {
+          "name": "формулы",
+          "label": "Формулы и примеры",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Важные формулы и примеры"
+        },
+        {
+          "name": "домашнее_задание",
+          "label": "Домашнее задание",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Задание на дом"
+        },
+        {
+          "name": "вопросы",
+          "label": "Вопросы для повторения",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Вопросы для самопроверки"
+        }
+      ]
+    },
+    {
+      "template_name": "Служебная записка",
+      "category": "Бизнес",
+      "description": "Официальный шаблон для оформления служебных записок с полями для адресата, темы и основного текста",
+      "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.89 22 5.99 22H18C19.1 22 20 21.1 20 20V8L14 2ZM16 18H8V16H16V18ZM16 14H8V12H16V14ZM13 9V3.5L18.5 9H13Z\" fill=\"#FFD700\"/></svg>",
+      "tags": ["служебная записка", "официальный", "бизнес"],
+      "fields": [
+        {
+          "name": "кому",
+          "label": "Кому",
+          "type": "text",
+          "required": true,
+          "placeholder": "ФИО и должность получателя"
+        },
+        {
+          "name": "от",
+          "label": "От",
+          "type": "text",
+          "required": true,
+          "placeholder": "Ваше ФИО и должность"
+        },
+        {
+          "name": "дата",
+          "label": "Дата",
+          "type": "date",
+          "required": true,
+          "placeholder": "Дата составления"
+        },
+        {
+          "name": "тема",
+          "label": "Тема",
+          "type": "text",
+          "required": true,
+          "placeholder": "Тема служебной записки"
+        },
+        {
+          "name": "текст",
+          "label": "Текст записки",
+          "type": "textarea",
+          "required": true,
+          "placeholder": "Основной текст служебной записки"
+        },
+        {
+          "name": "приложения",
+          "label": "Приложения",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Список приложений (если есть)"
+        }
+      ]
+    }
+  ]
+}
+
+
+
+
+
+

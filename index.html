@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заметки - Неоморфный дизайн</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">📝 Мои Заметки</h1>
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <button class="btn btn-primary" id="addNoteBtn">
+                    <span class="btn-icon">+</span>
+                    Новая заметка
+                </button>
+                <div class="templates-dropdown">
+                    <button class="btn btn-secondary templates-btn" id="templatesBtn">
+                        📋 Шаблоны
+                        <span style="font-size: 12px; margin-left: 4px;">▼</span>
+                    </button>
+                    <div class="templates-menu" id="templatesMenu">
+                        <!-- Шаблоны будут добавлены динамически -->
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="search-container">
+            <input type="text" 
+                   class="search-input" 
+                   id="searchInput" 
+                   placeholder="Поиск заметок...">
+        </div>
+
+        <div class="notes-grid" id="notesGrid">
+            <!-- Заметки будут добавлены динамически -->
+        </div>
+
+        <div class="empty-state" id="emptyState">
+            <div class="empty-icon">📄</div>
+            <p>У вас пока нет заметок</p>
+            <p class="empty-hint">Создайте первую заметку, нажав кнопку выше</p>
+        </div>
+    </div>
+
+    <!-- Модальное окно для создания/редактирования заметки -->
+    <div class="modal" id="noteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Новая заметка</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" 
+                       class="note-title-input" 
+                       id="noteTitleInput" 
+                       placeholder="Заголовок заметки">
+                <div class="rte-toolbar" id="rteToolbar">
+                    <button class="rte-btn" data-command="bold" title="Жирный (Ctrl+B)">B</button>
+                    <button class="rte-btn" data-command="italic" title="Курсив (Ctrl+I)">I</button>
+                    <button class="rte-btn" data-command="underline" title="Подчеркнутый (Ctrl+U)">U</button>
+                    <div style="width: 1px; height: 24px; background: var(--border-color); margin: 0 4px;"></div>
+                    <button class="rte-btn" data-command="formatBlock" data-value="h1" title="Заголовок 1">H1</button>
+                    <button class="rte-btn" data-command="formatBlock" data-value="h2" title="Заголовок 2">H2</button>
+                    <button class="rte-btn" data-command="formatBlock" data-value="h3" title="Заголовок 3">H3</button>
+                    <div style="width: 1px; height: 24px; background: var(--border-color); margin: 0 4px;"></div>
+                    <button class="rte-btn" data-command="insertUnorderedList" title="Маркированный список">•</button>
+                    <button class="rte-btn" data-command="insertOrderedList" title="Нумерованный список">1.</button>
+                    <div style="width: 1px; height: 24px; background: var(--border-color); margin: 0 4px;"></div>
+                    <button class="rte-btn" data-command="justifyLeft" title="По левому краю">⬅</button>
+                    <button class="rte-btn" data-command="justifyCenter" title="По центру">⬌</button>
+                    <button class="rte-btn" data-command="justifyRight" title="По правому краю">➡</button>
+                    <div style="width: 1px; height: 24px; background: var(--border-color); margin: 0 4px;"></div>
+                    <button class="rte-btn" data-command="formatBlock" data-value="blockquote" title="Цитата">❝</button>
+                </div>
+                <div class="rte-editor" 
+                     id="rteEditor" 
+                     contenteditable="true"
+                     placeholder="Начните писать вашу заметку..."></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelBtn">Отмена</button>
+                <button class="btn btn-primary" id="saveNoteBtn">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

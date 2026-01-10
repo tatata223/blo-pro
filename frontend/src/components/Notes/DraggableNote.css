@@ -1,0 +1,21 @@
+.draggable-note {
+  cursor: move;
+  transition: var(--transition);
+}
+
+.draggable-note:active {
+  opacity: 0.5;
+  transform: scale(0.98);
+}
+
+.draggable-note.dragging {
+  opacity: 0.5;
+}
+
+
+
+
+
+
+
+

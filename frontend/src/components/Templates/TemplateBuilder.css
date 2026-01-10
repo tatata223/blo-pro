@@ -1,0 +1,198 @@
+.template-builder {
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: var(--shadow-neumorphic-out);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.template-builder-header {
+  margin-bottom: 32px;
+  text-align: center;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 20px;
+}
+
+.template-builder-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
+}
+
+.template-description {
+  color: var(--text-secondary);
+  font-size: 16px;
+  margin: 0;
+}
+
+.template-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.template-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.template-field-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.required {
+  color: var(--danger-color);
+  font-size: 18px;
+}
+
+.template-field-input {
+  padding: 14px 18px;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: var(--shadow-neumorphic-in);
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.template-field-input:focus {
+  outline: none;
+  box-shadow: var(--shadow-neumorphic-pressed);
+}
+
+.template-field-input.error {
+  box-shadow: 
+    inset 0 0 15px rgba(229, 62, 62, 0.15),
+    inset 0 0 30px rgba(229, 62, 62, 0.08),
+    0 0 0 2px rgba(229, 62, 62, 0.3);
+}
+
+.template-field-input::placeholder {
+  color: var(--text-light);
+}
+
+textarea.template-field-input {
+  resize: vertical;
+  min-height: 100px;
+}
+
+select.template-field-input {
+  cursor: pointer;
+}
+
+.checkbox-field {
+  flex-direction: row;
+  align-items: center;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.template-checkbox {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+.field-error {
+  color: var(--danger-color);
+  font-size: 14px;
+  margin-top: -4px;
+}
+
+.template-form-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  margin-top: 8px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
+}
+
+.btn-cancel,
+.btn-save {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+  box-shadow: var(--shadow-neumorphic-out);
+  background: var(--card-bg);
+}
+
+.btn-cancel {
+  color: var(--text-secondary);
+}
+
+.btn-cancel:hover:not(:disabled) {
+  box-shadow: var(--shadow-neumorphic-soft);
+  color: var(--text-color);
+}
+
+.btn-cancel:active:not(:disabled) {
+  box-shadow: var(--shadow-neumorphic-pressed);
+}
+
+.btn-cancel:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-save {
+  color: var(--primary-color);
+}
+
+.btn-save:hover:not(:disabled) {
+  box-shadow: var(--shadow-neumorphic-soft);
+}
+
+.btn-save:active:not(:disabled) {
+  box-shadow: var(--shadow-neumorphic-pressed);
+}
+
+.btn-save:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .template-builder {
+    padding: 24px;
+  }
+  
+  .template-form-actions {
+    flex-direction: column;
+  }
+  
+  .btn-cancel,
+  .btn-save {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+

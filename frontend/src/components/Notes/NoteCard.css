@@ -1,0 +1,172 @@
+.note-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 24px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-neumorphic-out);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  min-height: 240px;
+  position: relative;
+  overflow: hidden;
+}
+
+.note-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: linear-gradient(180deg, var(--primary-color), var(--accent-color));
+  border-radius: 20px 0 0 20px;
+  transition: var(--transition);
+  opacity: 0;
+}
+
+.note-card:hover {
+  box-shadow: var(--shadow-neumorphic-soft);
+  transform: translateY(-6px) scale(1.02);
+}
+
+.note-card:hover::before {
+  opacity: 1;
+  width: 8px;
+}
+
+.note-card:active {
+  box-shadow: var(--shadow-neumorphic-pressed);
+  transform: translateY(-2px) scale(0.98);
+}
+
+.note-card.pinned::before {
+  opacity: 1;
+  width: 8px;
+  background: linear-gradient(180deg, var(--accent-color), var(--primary-color));
+}
+
+.note-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.note-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
+  flex: 1;
+  word-break: break-word;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pin-icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--accent-color);
+  flex-shrink: 0;
+}
+
+.pin-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.note-actions {
+  display: flex;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.note-card:hover .note-actions {
+  opacity: 1;
+}
+
+.action-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 10px;
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  padding: 0;
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.action-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.action-btn:hover {
+  box-shadow: var(--shadow-neumorphic-soft);
+  transform: scale(1.1);
+}
+
+.action-btn:active {
+  box-shadow: var(--shadow-neumorphic-pressed);
+  transform: scale(0.95);
+}
+
+.action-btn.delete:hover {
+  box-shadow: 
+    6px 6px 12px #B8BEC7,
+    -6px -6px 12px #FFFFFF,
+    inset 0 0 20px rgba(229, 62, 62, 0.2);
+}
+
+.note-content {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 12px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+}
+
+.note-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.note-tag {
+  padding: 4px 10px;
+  border: 1px solid;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  background: transparent;
+}
+
+.note-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: auto;
+}
+
+.note-folder {
+  font-size: 11px;
+}
+
+

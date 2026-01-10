@@ -1,0 +1,70 @@
+.daily-tasks {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.daily-tasks-header {
+  margin-bottom: 32px;
+}
+
+.daily-tasks-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 20px 0;
+}
+
+.daily-tasks-filter-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.task-filter-tab {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-neumorphic-in);
+}
+
+.task-filter-tab:hover {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.task-filter-tab.active {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: var(--shadow-neumorphic-out);
+}
+
+.daily-tasks-loading,
+.daily-tasks-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+.daily-tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .daily-tasks {
+    padding: 16px;
+  }
+
+  .daily-tasks-grid {
+    grid-template-columns: 1fr;
+  }
+}
