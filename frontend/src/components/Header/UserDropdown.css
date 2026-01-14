@@ -2,6 +2,30 @@
   position: relative;
 }
 
+.btn-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 10px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+  box-shadow: var(--shadow-neumorphic-out);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.btn-login:hover {
+  box-shadow: var(--shadow-neumorphic-soft);
+}
+
+.btn-login:active {
+  box-shadow: var(--shadow-neumorphic-pressed);
+}
+
 .user-dropdown-trigger {
   display: flex;
   align-items: center;

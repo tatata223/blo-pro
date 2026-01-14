@@ -25,6 +25,7 @@ const Layout = ({ children, showSidebar = false }) => {
 
   const handleSearchChange = (value) => {
     setSearchQuery(value);
+
   };
 
   return (

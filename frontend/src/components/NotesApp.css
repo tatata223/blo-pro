@@ -65,7 +65,7 @@
 /* Адаптивный дизайн для мобильных */
 @media (max-width: 1024px) {
   .notes-main {
-    padding: 24px;
+    padding: 20px;
   }
 }
 
@@ -75,17 +75,39 @@
   }
   
   .notes-main {
-    padding: 16px;
-  }
-}
-
-@media (max-width: 640px) {
-  .notes-main {
-    padding: 12px;
+    padding: 12px 8px;
+    min-height: calc(100vh - 56px);
   }
   
   .notes-grid {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .notes-main {
+    padding: 8px 4px;
+  }
+  
+  .notes-grid {
+    gap: 8px;
+  }
+  
+  .empty-state {
+    width: calc(100% - 16px);
+    height: auto;
+    padding: 40px 20px;
+    margin: 20px auto;
+  }
+  
+  .empty-icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 20px;
+  }
+  
+  .empty-state p {
+    font-size: 15px;
   }
 }

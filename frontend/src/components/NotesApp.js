@@ -37,10 +37,137 @@ const NotesApp = () => {
   // Debounce поискового запроса
   const debouncedSearchQuery = useDebounce(searchQuery, 300);
 
-  // Не загружаем данные, пока не загружен пользователь
+  // Guest mode helpers
+  const getGuestNotes = () => {
+    try {
+      const stored = localStorage.getItem('guest_notes');
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  };
+
+  const getGuestFolders = () => {
+    try {
+      const stored = localStorage.getItem('guest_folders');
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  };
+
+  const getGuestTags = () => {
+    try {
+      const stored = localStorage.getItem('guest_tags');
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  };
+
+  const saveGuestNote = (note) => {
+    const guestNotes = getGuestNotes();
+    if (guestNotes.length >= 1 && !note.id) {
+      toast.error('Для создания больше заметок необходимо зарегистрироваться');
+      setShowAuthModal(true);
+      return false;
+    }
+    const updatedNotes = note.id 
+      ? guestNotes.map(n => n.id === note.id ? { ...note, id: note.id } : n)
+      : [...guestNotes, { ...note, id: `guest_${Date.now()}` }];
+    localStorage.setItem('guest_notes', JSON.stringify(updatedNotes));
+    return true;
+  };
+
+  const saveGuestFolder = (folder) => {
+    const guestFolders = getGuestFolders();
+    if (guestFolders.length >= 1 && !folder.id) {
+      toast.error('Для создания больше папок необходимо зарегистрироваться');
+      setShowAuthModal(true);
+      return false;
+    }
+    const updatedFolders = folder.id
+      ? guestFolders.map(f => f.id === folder.id ? folder : f)
+      : [...guestFolders, { ...folder, id: `guest_${Date.now()}` }];
+    localStorage.setItem('guest_folders', JSON.stringify(updatedFolders));
+    return true;
+  };
+
+  const saveGuestTag = (tag) => {
+    const guestTags = getGuestTags();
+    if (guestTags.length >= 1 && !tag.id) {
+      toast.error('Для создания больше тегов необходимо зарегистрироваться');
+      setShowAuthModal(true);
+      return false;
+    }
+    const updatedTags = tag.id
+      ? guestTags.map(t => t.id === tag.id ? tag : t)
+      : [...guestTags, { ...tag, id: `guest_${Date.now()}` }];
+    localStorage.setItem('guest_tags', JSON.stringify(updatedTags));
+    return true;
+  };
+
+  const transferGuestData = async () => {
+    const guestNotes = getGuestNotes();
+    const guestFolders = getGuestFolders();
+    const guestTags = getGuestTags();
+    
+    try {
+      // Transfer folders
+      for (const folder of guestFolders) {
+        try {
+          await foldersAPI.create({ name: folder.name, color: folder.color });
+        } catch (error) {
+          console.error('Error transferring folder:', error);
+        }
+      }
+      
+      // Transfer tags
+      for (const tag of guestTags) {
+        try {
+          await tagsAPI.create({ name: tag.name, color: tag.color });
+        } catch (error) {
+          console.error('Error transferring tag:', error);
+        }
+      }
+      
+      // Transfer notes
+      for (const note of guestNotes) {
+        try {
+          await notesAPI.create({
+            title: note.title,
+            content: note.content,
+            folder: note.folder
+          });
+        } catch (error) {
+          console.error('Error transferring note:', error);
+        }
+      }
+      
+      // Clear guest data
+      localStorage.removeItem('guest_notes');
+      localStorage.removeItem('guest_folders');
+      localStorage.removeItem('guest_tags');
+    } catch (error) {
+      console.error('Error transferring guest data:', error);
+    }
+  };
+
+  // Загружаем данные для авторизованных пользователей или гостевые данные
   useEffect(() => {
-    if (!authLoading && user) {
-      loadData();
+    if (!authLoading) {
+      if (user) {
+        loadData();
+      } else {
+        // Загружаем гостевые данные
+        const guestNotes = getGuestNotes();
+        const guestFolders = getGuestFolders();
+        const guestTags = getGuestTags();
+        setNotes(guestNotes);
+        setFolders(guestFolders);
+        setTags(guestTags);
+        setLoading(false);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authLoading, user]);
@@ -56,8 +183,80 @@ const NotesApp = () => {
   }, [authLoading, isInitialLoad, showEditor, showTemplateBuilder]);
 
   useEffect(() => {
-    if (!authLoading && user) {
-      loadNotes();
+    if (!authLoading) {
+      if (user) {
+        // Проверяем, не является ли selectedFolder guest ID
+        const isGuestFolder = selectedFolder && typeof selectedFolder === 'string' && selectedFolder.startsWith('guest_');
+        if (!isGuestFolder) {
+          loadNotes();
+        } else {
+          // Фильтруем гостевые заметки локально
+          const guestNotes = getGuestNotes();
+          let filteredNotes = guestNotes;
+          
+          if (selectedFolder) {
+            filteredNotes = filteredNotes.filter(note => {
+              const noteFolderId = typeof note.folder === 'object' && note.folder !== null
+                ? note.folder.id
+                : note.folder || null;
+              return noteFolderId === selectedFolder;
+            });
+          }
+          
+          if (selectedTags.length > 0) {
+            filteredNotes = filteredNotes.filter(note => {
+              const noteTags = Array.isArray(note.tags) 
+                ? note.tags.map(t => typeof t === 'object' ? t.id : t)
+                : [];
+              return selectedTags.some(tagId => noteTags.includes(tagId));
+            });
+          }
+          
+          if (debouncedSearchQuery) {
+            const query = debouncedSearchQuery.toLowerCase();
+            filteredNotes = filteredNotes.filter(note => 
+              (note.title || '').toLowerCase().includes(query) ||
+              (note.content || '').toLowerCase().includes(query)
+            );
+          }
+          
+          setNotes(filteredNotes);
+          setLoading(false);
+        }
+      } else {
+        // Для гостей фильтруем локально
+        const guestNotes = getGuestNotes();
+        let filteredNotes = guestNotes;
+        
+        if (selectedFolder) {
+          filteredNotes = filteredNotes.filter(note => {
+            const noteFolderId = typeof note.folder === 'object' && note.folder !== null
+              ? note.folder.id
+              : note.folder || null;
+            return noteFolderId === selectedFolder;
+          });
+        }
+        
+        if (selectedTags.length > 0) {
+          filteredNotes = filteredNotes.filter(note => {
+            const noteTags = Array.isArray(note.tags) 
+              ? note.tags.map(t => typeof t === 'object' ? t.id : t)
+              : [];
+            return selectedTags.some(tagId => noteTags.includes(tagId));
+          });
+        }
+        
+        if (debouncedSearchQuery) {
+          const query = debouncedSearchQuery.toLowerCase();
+          filteredNotes = filteredNotes.filter(note => 
+            (note.title || '').toLowerCase().includes(query) ||
+            (note.content || '').toLowerCase().includes(query)
+          );
+        }
+        
+        setNotes(filteredNotes);
+        setLoading(false);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedFolder, selectedTags, debouncedSearchQuery, authLoading, user]);
@@ -98,9 +297,55 @@ const NotesApp = () => {
     try {
       setLoading(true);
       setError(null);
+      
+      // Проверяем, не является ли selectedFolder guest ID
+      const isGuestFolder = selectedFolder && typeof selectedFolder === 'string' && selectedFolder.startsWith('guest_');
+      if (isGuestFolder) {
+        // Фильтруем гостевые заметки локально
+        const guestNotes = getGuestNotes();
+        let filteredNotes = guestNotes.filter(note => {
+          const noteFolderId = typeof note.folder === 'object' && note.folder !== null
+            ? note.folder.id
+            : note.folder || null;
+          return noteFolderId === selectedFolder;
+        });
+        
+        if (selectedTags.length > 0) {
+          filteredNotes = filteredNotes.filter(note => {
+            const noteTags = Array.isArray(note.tags) 
+              ? note.tags.map(t => typeof t === 'object' ? t.id : t)
+              : [];
+            return selectedTags.some(tagId => noteTags.includes(tagId));
+          });
+        }
+        
+        if (debouncedSearchQuery) {
+          const query = debouncedSearchQuery.toLowerCase();
+          filteredNotes = filteredNotes.filter(note => 
+            (note.title || '').toLowerCase().includes(query) ||
+            (note.content || '').toLowerCase().includes(query)
+          );
+        }
+        
+        setNotes(filteredNotes);
+        setLoading(false);
+        return;
+      }
+      
       const params = {};
-      if (selectedFolder) params.folder = selectedFolder;
-      if (selectedTags.length > 0) params.tags = selectedTags;
+      // Отправляем только числовые ID папок
+      if (selectedFolder && !isGuestFolder) {
+        params.folder = selectedFolder;
+      }
+      if (selectedTags.length > 0) {
+        // Фильтруем guest теги
+        const numericTagIds = selectedTags.filter(tagId => 
+          typeof tagId === 'number' || (typeof tagId === 'string' && !tagId.startsWith('guest_'))
+        );
+        if (numericTagIds.length > 0) {
+          params.tags = numericTagIds;
+        }
+      }
       if (debouncedSearchQuery) params.search = debouncedSearchQuery;
       
       const response = await notesAPI.getAll(params);
@@ -174,11 +419,25 @@ const NotesApp = () => {
   };
 
   const handleSaveNote = async (noteData, isFormData = false) => {
-    // Если пользователь не авторизован, показываем модальное окно
+    // Если пользователь не авторизован, сохраняем в guest mode
     if (!user) {
-      setPendingNoteData(noteData);
-      setShowAuthModal(true);
-      return;
+      const guestNote = {
+        title: noteData.title || 'Без названия',
+        content: noteData.content || '',
+        folder: noteData.folder || null,
+        tags: noteData.tags || [],
+        id: selectedNote?.id || null
+      };
+      if (saveGuestNote(guestNote)) {
+        const guestNotes = getGuestNotes();
+        const savedNote = guestNote.id 
+          ? guestNotes.find(n => n.id === guestNote.id) || guestNote
+          : guestNotes[guestNotes.length - 1];
+        setSelectedNote(savedNote);
+        toast.success('Заметка сохранена (гостевой режим)');
+        return savedNote;
+      }
+      return null;
     }
 
     try {
@@ -221,6 +480,11 @@ const NotesApp = () => {
   };
 
   const handleAuthSuccess = async () => {
+    // После успешной авторизации переносим гостевые данные
+    await transferGuestData();
+    await loadData();
+    await loadNotes();
+    
     // После успешной авторизации сохраняем отложенную заметку
     if (pendingNoteData) {
       try {
@@ -351,17 +615,38 @@ const NotesApp = () => {
         onSearchToggle={() => setIsSearchOpen(!isSearchOpen)}
         isSidebarOpen={isSidebarOpen}
         isSearchOpen={isSearchOpen}
+        onAuthRequired={() => setShowAuthModal(true)}
       />
       <div className="notes-app-content">
         <Sidebar
-          folders={user ? folders : []}
-          tags={user ? tags : []}
+          folders={user ? folders : getGuestFolders()}
+          tags={user ? tags : getGuestTags()}
           selectedFolder={selectedFolder}
           selectedTags={selectedTags}
           onFolderSelect={setSelectedFolder}
           onTagSelect={setSelectedTags}
-          onFolderCreate={loadData}
-          onTagCreate={loadData}
+          onFolderCreate={async (folderData) => {
+            if (!user) {
+              if (saveGuestFolder(folderData)) {
+                const guestFolders = getGuestFolders();
+                setFolders(guestFolders);
+                toast.success('Папка создана (гостевой режим)');
+              }
+            } else {
+              await loadData();
+            }
+          }}
+          onTagCreate={async (tagData) => {
+            if (!user) {
+              if (saveGuestTag(tagData)) {
+                const guestTags = getGuestTags();
+                setTags(guestTags);
+                toast.success('Тег создан (гостевой режим)');
+              }
+            } else {
+              await loadData();
+            }
+          }}
           onTemplateSelect={handleCreateNote}
           loading={loading && folders.length === 0}
           user={user}
@@ -398,26 +683,13 @@ const NotesApp = () => {
             />
           ) : (
             <>
-              {user ? (
-                <NotesGrid
-                  notes={notes}
-                  loading={loading}
-                  onEdit={handleEditNote}
-                  onDelete={handleDeleteNote}
-                  onPin={handlePinNote}
-                />
-              ) : (
-                <div style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center', 
-                  height: '100%',
-                  color: 'var(--text-secondary)',
-                  fontSize: '16px'
-                }}>
-                  Войдите, чтобы увидеть ваши заметки
-                </div>
-              )}
+              <NotesGrid
+                notes={user ? notes : getGuestNotes()}
+                loading={loading}
+                onEdit={handleEditNote}
+                onDelete={handleDeleteNote}
+                onPin={handlePinNote}
+              />
             </>
           )}
         </div>

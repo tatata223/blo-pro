@@ -143,17 +143,41 @@
 .note-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
   margin-bottom: 12px;
 }
 
 .note-tag {
-  padding: 4px 10px;
-  border: 1px solid;
-  border-radius: 12px;
-  font-size: 11px;
-  font-weight: 500;
-  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: var(--shadow-neumorphic-out);
+  border: none;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.note-tag::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 16px 0 0 16px;
+  background: currentColor;
+  opacity: 0.8;
+}
+
+.note-tag:hover {
+  box-shadow: var(--shadow-neumorphic-soft);
+  transform: translateY(-1px);
 }
 
 .note-footer {
@@ -167,6 +191,59 @@
 
 .note-folder {
   font-size: 11px;
+}
+
+@media (max-width: 768px) {
+  .note-card {
+    padding: 16px;
+    min-height: 180px;
+    border-radius: 16px;
+  }
+  
+  .note-title {
+    font-size: 16px;
+  }
+  
+  .note-content {
+    font-size: 13px;
+    -webkit-line-clamp: 3;
+  }
+  
+  .action-btn {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .action-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .note-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .note-card {
+    padding: 12px;
+    min-height: 160px;
+    border-radius: 12px;
+  }
+  
+  .note-title {
+    font-size: 15px;
+  }
+  
+  .note-content {
+    font-size: 12px;
+    -webkit-line-clamp: 2;
+  }
+  
+  .note-actions {
+    opacity: 1;
+  }
 }
 
 

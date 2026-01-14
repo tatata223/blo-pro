@@ -10,6 +10,7 @@
   margin: 40px auto;
   padding: 32px;
   position: relative;
+  height: calc(100vh - 120px);
 }
 
 .note-editor::after {
@@ -52,13 +53,14 @@
   flex: 1;
   border: none;
   border-radius: 8px;
-  padding: 10px 14px;
-  font-size: 20px;
+  padding: 6px 10px;
+  font-size: 16px;
   font-weight: 600;
   background: var(--card-bg);
   color: var(--text-color);
   transition: box-shadow 0.2s ease;
   box-shadow: var(--shadow-neumorphic-in);
+  max-width: 300px;
 }
 
 .editor-title:focus {
@@ -76,6 +78,35 @@
   align-items: center;
 }
 
+
+.btn-home {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-neumorphic-out);
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.btn-home:hover {
+  box-shadow: var(--shadow-neumorphic-soft);
+}
+
+.btn-home:active {
+  box-shadow: var(--shadow-neumorphic-pressed);
+}
+
+.btn-home svg {
+  width: 20px;
+  height: 20px;
+}
 
 .btn-save,
 .btn-cancel {
@@ -129,10 +160,12 @@
 
 .btn-save {
   color: #22C55E;
+  background: var(--card-bg);
 }
 
 .btn-save:hover:not(:disabled) {
   box-shadow: var(--shadow-neumorphic-soft);
+  background: rgba(34, 197, 94, 0.1);
 }
 
 .btn-save:active:not(:disabled) {
@@ -146,10 +179,12 @@
 
 .btn-cancel {
   color: #EF4444;
+  background: var(--card-bg);
 }
 
 .btn-cancel:hover {
   box-shadow: var(--shadow-neumorphic-soft);
+  background: rgba(239, 68, 68, 0.1);
 }
 
 .btn-cancel:active {
@@ -167,9 +202,15 @@
   flex-direction: column;
   gap: 20px;
   padding: 20px 0;
-  margin-bottom: 20px;
+  margin-top: 20px;
   border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
+}
+
+.editor-sidebar-bottom {
+  margin-bottom: 0;
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
 }
 
 .editor-sidebar-section {
@@ -193,43 +234,45 @@
   color: var(--text-secondary);
 }
 
-.editor-folder-select {
-  width: 100%;
-  padding: 10px 14px;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  background: var(--card-bg);
-  color: var(--text-color);
-  box-shadow: var(--shadow-neumorphic-in);
-  transition: box-shadow 0.2s ease;
-  cursor: pointer;
-}
-
-.editor-folder-select:focus {
-  outline: none;
-  box-shadow: var(--shadow-neumorphic-pressed);
-}
 
 .editor-selected-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 8px;
+  gap: 10px;
+  margin-top: 12px;
 }
 
 .editor-tag-item {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
+  gap: 8px;
+  padding: 8px 14px;
   background: var(--card-bg);
-  border-radius: 16px;
+  border-radius: 18px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-color);
-  border-left: 3px solid;
   box-shadow: var(--shadow-neumorphic-out);
+  border: none;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.editor-tag-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 18px 0 0 18px;
+  background: currentColor;
+  opacity: 0.8;
+}
+
+.editor-tag-item:hover {
+  box-shadow: var(--shadow-neumorphic-soft);
+  transform: translateY(-1px);
 }
 
 .editor-tag-remove {
@@ -259,64 +302,67 @@
 
 
 @media (max-width: 768px) {
-  .editor-header {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
-  
   .note-editor {
-    padding: 16px;
-    margin: 16px auto;
-    border-radius: 20px;
-    max-width: calc(100% - 32px);
+    padding: 12px;
+    margin: 0;
+    border-radius: 0;
+    max-width: 100%;
     width: 100%;
+    min-height: calc(100vh - 56px);
+    height: calc(100vh - 56px);
   }
 
   .note-editor::after {
-    top: -16px;
-    left: -16px;
-    right: -16px;
-    bottom: -16px;
-    border-radius: 28px;
+    display: none;
+  }
+  
+  .editor-header {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 8px;
+    flex-wrap: wrap;
   }
   
   .editor-title {
     font-size: 16px;
-    padding: 8px 12px;
+    padding: 8px 10px;
+    max-width: 100%;
+    flex: 1;
+    min-width: 150px;
   }
 
   .editor-actions {
-    flex-wrap: wrap;
-    gap: 8px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: nowrap;
   }
 
+  .btn-home,
   .btn-save,
   .btn-cancel,
   .btn-export {
     width: 36px;
     height: 36px;
+    flex-shrink: 0;
   }
 
+  .btn-home svg,
   .btn-save svg,
   .btn-cancel svg,
   .btn-export svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
 
   .editor-sidebar {
-    padding: 16px 0;
-    gap: 16px;
+    padding: 12px 0;
+    gap: 12px;
+    margin-top: 12px;
   }
 
   .editor-sidebar-label {
-    font-size: 13px;
-  }
-
-  .editor-folder-select {
-    padding: 8px 12px;
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .editor-selected-tags {

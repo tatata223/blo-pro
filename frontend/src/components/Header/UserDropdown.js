@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './UserDropdown.css';
 
-const UserDropdown = ({ user, onLogout, onCreateNote }) => {
+const UserDropdown = ({ user, onLogout, onCreateNote, onAuthRequired }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
@@ -33,6 +33,22 @@ const UserDropdown = ({ user, onLogout, onCreateNote }) => {
       navigate('/settings');
     }
   };
+
+  if (!user) {
+    return (
+      <button
+        className="btn-login"
+        onClick={() => {
+          if (onAuthRequired) {
+            onAuthRequired();
+          }
+        }}
+        title="Войти"
+      >
+        Войти
+      </button>
+    );
+  }
 
   return (
     <div className="user-dropdown" ref={dropdownRef}>

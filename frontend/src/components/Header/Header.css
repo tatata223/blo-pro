@@ -1,6 +1,6 @@
 .app-header {
   background: var(--card-bg);
-  padding: 8px 16px;
+  padding: 8px 0;
   box-shadow: var(--shadow-neumorphic-soft);
   position: sticky;
   top: 0;
@@ -17,53 +17,48 @@
   max-width: 1400px;
   margin: 0 auto;
   height: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .header-left {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
+  position: absolute;
+  left: 0;
+  padding-left: 2px;
+  z-index: 10;
 }
 
-.app-title-btn {
+.app-logo-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   background: var(--card-bg);
   border: none;
   cursor: pointer;
-  padding: 6px 12px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   transition: var(--transition);
   box-shadow: var(--shadow-neumorphic-out);
 }
 
-.app-title-btn:hover {
-  background: var(--bg-secondary);
+.app-logo-btn:hover {
   box-shadow: var(--shadow-neumorphic-soft);
 }
 
-.app-title-btn:active {
+.app-logo-btn:active {
   box-shadow: var(--shadow-neumorphic-pressed);
 }
 
 .app-logo {
-  color: var(--primary-color);
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-}
-
-.app-title-text {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text-color);
-  letter-spacing: -0.02em;
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .app-title {
@@ -75,11 +70,15 @@
 }
 
 .header-center {
-  flex: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   max-width: 500px;
+  width: calc(100% - 200px);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 5;
 }
 
 .header-center.search-open {
@@ -229,8 +228,12 @@
 .header-right {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   flex-shrink: 0;
+  position: absolute;
+  right: 0;
+  padding-right: 2px;
+  z-index: 10;
 }
 
 .create-note-wrapper {
@@ -241,8 +244,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: none;
   border-radius: 50%;
@@ -268,23 +271,22 @@
 }
 
 .btn-create-note svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
 }
 
 .theme-toggle {
-  width: 36px;
-  height: 36px;
+  width: 56px;
+  height: 32px;
   border: none;
-  border-radius: 50%;
-  background: var(--card-bg);
-  color: var(--text-color);
+  border-radius: 16px;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: box-shadow 0.2s ease;
+  padding: 3px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: var(--shadow-neumorphic-out);
   position: relative;
   overflow: hidden;
@@ -292,17 +294,60 @@
 
 .theme-toggle:hover {
   box-shadow: var(--shadow-neumorphic-soft);
+  transform: scale(1.05);
 }
 
 .theme-toggle:active {
   box-shadow: var(--shadow-neumorphic-pressed);
+  transform: scale(0.98);
+}
+
+.theme-toggle[data-theme="dark"] {
+  background: linear-gradient(135deg, #4A5568 0%, #2D3748 100%);
+}
+
+.theme-toggle-slider {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.theme-toggle[data-theme="dark"] .theme-toggle-slider {
+  transform: translateX(24px);
+  background: #F7FAFC;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.9);
 }
 
 .theme-toggle svg {
-  width: 18px;
-  height: 18px;
-  position: relative;
-  z-index: 1;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.theme-toggle .theme-icon-light {
+  opacity: 1;
+  color: #FFA500;
+}
+
+.theme-toggle .theme-icon-dark {
+  opacity: 0;
+  color: #E2E8F0;
+}
+
+.theme-toggle[data-theme="dark"] .theme-icon-light {
+  opacity: 0;
+}
+
+.theme-toggle[data-theme="dark"] .theme-icon-dark {
+  opacity: 1;
 }
 
 .btn-primary {
@@ -373,19 +418,123 @@
 }
 
 @media (max-width: 768px) {
-  .header-content {
-    flex-direction: column;
-    gap: 12px;
+  .app-header {
+    padding: 6px 0;
+    height: 52px;
   }
   
-  .header-center {
-    max-width: 100%;
-    width: 100%;
+  .header-content {
+    gap: 8px;
+  }
+  
+  .header-left {
+    gap: 4px;
+    padding-left: 2px;
   }
   
   .header-right {
-    width: 100%;
-    justify-content: space-between;
+    gap: 4px;
+    padding-right: 2px;
+  }
+  
+  .header-center {
+    max-width: calc(100% - 180px);
+    width: calc(100% - 180px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .btn-burger,
+  .app-logo-btn,
+  .btn-search-toggle,
+  .btn-create-note,
+  .theme-toggle,
+  .user-dropdown-trigger {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .app-logo {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .btn-create-note {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .btn-create-note svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .theme-toggle {
+    width: 50px;
+    height: 28px;
+  }
+  
+  .theme-toggle-slider {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .theme-toggle[data-theme="dark"] .theme-toggle-slider {
+    transform: translateX(20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    height: 48px;
+    padding: 4px 0;
+  }
+  
+  .btn-burger,
+  .app-logo-btn,
+  .btn-search-toggle,
+  .btn-create-note,
+  .user-dropdown-trigger {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .app-logo {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .btn-create-note {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .theme-toggle {
+    width: 48px;
+    height: 26px;
+  }
+  
+  .theme-toggle-slider {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .theme-toggle[data-theme="dark"] .theme-toggle-slider {
+    transform: translateX(20px);
+  }
+  
+  .header-center {
+    max-width: calc(100% - 160px);
+    width: calc(100% - 160px);
+  }
+  
+  .search-container-center {
+    max-width: 100%;
+  }
+  
+  .search-input-center {
+    font-size: 14px;
+    padding: 6px 32px 6px 32px;
   }
 }
 

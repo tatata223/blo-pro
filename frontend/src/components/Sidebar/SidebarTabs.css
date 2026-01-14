@@ -36,7 +36,7 @@
 .tab-button.active {
   color: var(--primary-color);
   font-weight: 600;
-  box-shadow: var(--shadow-neumorphic-soft);
+  box-shadow: var(--shadow-neumorphic-in);
 }
 
 .tab-button:active:not(:disabled) {

@@ -74,15 +74,20 @@ const NoteCard = memo(({ note, onEdit, onDelete, onPin }) => {
       </div>
       {note.tags && note.tags.length > 0 && (
         <div className="note-tags">
-          {note.tags.map(tag => (
-            <span
-              key={tag.id}
-              className="note-tag"
-              style={{ borderColor: tag.color, color: tag.color }}
-            >
-              {tag.name}
-            </span>
-          ))}
+          {note.tags.map(tag => {
+            const tagColor = typeof tag === 'object' ? (tag.color || '#90EE90') : '#90EE90';
+            const tagName = typeof tag === 'object' ? tag.name : tag;
+            const tagId = typeof tag === 'object' ? tag.id : tag;
+            return (
+              <span
+                key={tagId}
+                className="note-tag"
+                style={{ color: tagColor }}
+              >
+                {tagName}
+              </span>
+            );
+          })}
         </div>
       )}
       <div className="note-footer">

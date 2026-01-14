@@ -6,7 +6,7 @@ import UserDropdown from './UserDropdown';
 import CreateNoteDropdown from './CreateNoteDropdown';
 import './Header.css';
 
-const Header = memo(({ searchQuery, onSearchChange, onCreateNote, onSidebarToggle, onSearchToggle, isSidebarOpen, isSearchOpen, onTemplateSelect }) => {
+const Header = memo(({ searchQuery, onSearchChange, onCreateNote, onSidebarToggle, onSearchToggle, isSidebarOpen, isSearchOpen, onTemplateSelect, onAuthRequired }) => {
   const { user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
@@ -97,18 +97,21 @@ const Header = memo(({ searchQuery, onSearchChange, onCreateNote, onSidebarToggl
             </svg>
           </button>
           <button
-            className="app-title-btn"
+            className="app-logo-btn"
             onClick={() => navigate('/', { replace: false })}
             title="Перейти на главную страницу"
           >
-            <svg className="app-logo" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M14 2V8H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M16 13H8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M16 17H8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M10 9H9H8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            <svg className="app-logo" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#7BC47F" stopOpacity="1" />
+                  <stop offset="100%" stopColor="#E6C866" stopOpacity="1" />
+                </linearGradient>
+              </defs>
+              <circle cx="12" cy="12" r="10" fill="url(#logoGradient)"/>
+              <path d="M8 10L12 6L16 10M8 14L12 18L16 14" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.95"/>
+              <path d="M12 6V18" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
             </svg>
-            <span className="app-title-text">BlocknotPRO</span>
           </button>
         </div>
         <div className={`header-center ${isSearchOpen ? 'search-open' : ''}`}>
@@ -155,7 +158,7 @@ const Header = memo(({ searchQuery, onSearchChange, onCreateNote, onSidebarToggl
               onClick={handleCreateClick}
               title="Создать"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
               </svg>
             </button>
@@ -168,24 +171,25 @@ const Header = memo(({ searchQuery, onSearchChange, onCreateNote, onSidebarToggl
           </div>
           <button
             className="theme-toggle"
+            data-theme={theme}
             onClick={toggleTheme}
             title={theme === 'light' ? 'Переключить на темную тему' : 'Переключить на светлую тему'}
           >
-            {theme === 'light' ? (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            ) : (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div className="theme-toggle-slider">
+              <svg className="theme-icon-light" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="2"/>
                 <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
               </svg>
-            )}
+              <svg className="theme-icon-dark" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
           </button>
           <UserDropdown
             user={user}
             onLogout={logout}
             onCreateNote={onCreateNote}
+            onAuthRequired={onAuthRequired}
           />
         </div>
       </div>

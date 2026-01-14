@@ -563,9 +563,21 @@
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
+    left: -100%;
+    top: 56px;
+    height: calc(100vh - 56px);
     border-right: none;
-    border-bottom: 2px solid var(--border-color);
-    max-height: 300px;
+    border-radius: 0;
+    padding: 12px;
+    z-index: 1000;
+  }
+  
+  .sidebar.open {
+    left: 0;
+  }
+  
+  .sidebar-overlay {
+    z-index: 999;
   }
 }
 

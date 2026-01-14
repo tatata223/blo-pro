@@ -27,14 +27,14 @@ const Sidebar = memo(({
   const [showTagForm, setShowTagForm] = useState(false);
 
   const handleFolderCreate = async (folderData) => {
-    // Проверяем авторизацию
+    // Если пользователь не авторизован, используем callback для гостевого режима
     if (!user) {
-      if (onAuthRequired) {
+      if (onFolderCreate) {
+        await onFolderCreate(folderData);
+        setShowFolderForm(false);
+      } else if (onAuthRequired) {
         onAuthRequired();
-      } else {
-        toast.error('Войдите, чтобы создать папку');
       }
-      setShowFolderForm(false);
       return;
     }
 
@@ -78,14 +78,14 @@ const Sidebar = memo(({
   };
 
   const handleTagCreate = async (tagData) => {
-    // Проверяем авторизацию
+    // Если пользователь не авторизован, используем callback для гостевого режима
     if (!user) {
-      if (onAuthRequired) {
+      if (onTagCreate) {
+        await onTagCreate(tagData);
+        setShowTagForm(false);
+      } else if (onAuthRequired) {
         onAuthRequired();
-      } else {
-        toast.error('Войдите, чтобы создать тег');
       }
-      setShowTagForm(false);
       return;
     }
 
@@ -184,27 +184,6 @@ const Sidebar = memo(({
       {isOpen && <div className="sidebar-overlay" onClick={onClose} />}
       <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
 
-      {!user && (
-        <div className="sidebar-auth-message">
-          <div className="auth-message-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M12 8V12M12 16H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-          <p className="auth-message-text">
-            Войдите, чтобы создавать папки, теги и использовать шаблоны
-          </p>
-          {onAuthRequired && (
-            <button
-              className="auth-message-btn"
-              onClick={onAuthRequired}
-            >
-              Войти или Зарегистрироваться
-            </button>
-          )}
-        </div>
-      )}
 
       <SidebarTabs activeTab={activeTab} onTabChange={setActiveTab}>
         {activeTab === 'folders' ? (
@@ -220,14 +199,9 @@ const Sidebar = memo(({
               <button
                 className="btn-add"
                 onClick={() => {
-                  if (!user && onAuthRequired) {
-                    onAuthRequired();
-                  } else {
-                    setShowFolderForm(!showFolderForm);
-                  }
+                  setShowFolderForm(!showFolderForm);
                 }}
-                title={user ? "Создать папку" : "Войдите, чтобы создать папку"}
-                disabled={!user}
+                title="Создать папку"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
@@ -241,7 +215,9 @@ const Sidebar = memo(({
               />
             )}
             {loading ? (
-              <div className="loading-message">Загрузка...</div>
+              <div className="loading-message">
+                {!user ? 'Создайте новую папку или создайте новый тег' : 'Загрузка...'}
+              </div>
             ) : (
               <div className="folder-list">
                 <button
@@ -303,14 +279,9 @@ const Sidebar = memo(({
               <button
                 className="btn-add"
                 onClick={() => {
-                  if (!user && onAuthRequired) {
-                    onAuthRequired();
-                  } else {
-                    setShowTagForm(!showTagForm);
-                  }
+                  setShowTagForm(!showTagForm);
                 }}
-                title={user ? "Создать тег" : "Войдите, чтобы создать тег"}
-                disabled={!user}
+                title="Создать тег"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
@@ -324,7 +295,9 @@ const Sidebar = memo(({
               />
             )}
             {loading ? (
-              <div className="loading-message">Загрузка...</div>
+              <div className="loading-message">
+                {!user ? 'Создайте новую папку или создайте новый тег' : 'Загрузка...'}
+              </div>
             ) : (
               <div className="tag-list">
                 {Array.isArray(tags) && tags.length > 0 ? (

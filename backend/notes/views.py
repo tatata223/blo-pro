@@ -263,7 +263,13 @@ class NoteViewSet(viewsets.ModelViewSet):
         # Фильтрация по папке
         folder_id = self.request.query_params.get('folder', None)
         if folder_id:
-            queryset = queryset.filter(folder_id=folder_id)
+            # Проверяем, что folder_id - это число (не guest ID)
+            try:
+                folder_id_int = int(folder_id)
+                queryset = queryset.filter(folder_id=folder_id_int)
+            except (ValueError, TypeError):
+                # Если это не число (например, guest_*), игнорируем фильтр
+                pass
         
         # Фильтрация по тегам
         tag_ids = self.request.query_params.getlist('tags', [])

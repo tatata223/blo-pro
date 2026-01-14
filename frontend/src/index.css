@@ -25,11 +25,23 @@
   --gradient-accent: linear-gradient(135deg, #FFD700 0%, #FFC700 100%);
   --gradient-bg: linear-gradient(135deg, #F0F4F8 0%, #E8EDF3 100%);
   
-  /* Минималистичные неоморфные тени без свечения */
-  --shadow-neumorphic-out: 2px 2px 4px rgba(0, 0, 0, 0.08), -2px -2px 4px rgba(255, 255, 255, 0.5);
-  --shadow-neumorphic-in: inset 0 0 12px rgba(0, 0, 0, 0.08), inset 0 0 24px rgba(0, 0, 0, 0.04);
-  --shadow-neumorphic-soft: 2px 2px 4px rgba(0, 0, 0, 0.06);
-  --shadow-neumorphic-pressed: inset 0 0 15px rgba(0, 0, 0, 0.12), inset 0 0 30px rgba(0, 0, 0, 0.06);
+  /* Менее выраженный неоморфизм с акцентом на центр для лучшей различимости */
+  --shadow-neumorphic-out: 2px 2px 5px rgba(0, 0, 0, 0.08), -2px -2px 5px rgba(255, 255, 255, 0.5),
+                           0 0 0 1px rgba(0, 0, 0, 0.02) inset,
+                           0 0 30px rgba(255, 255, 255, 0.4) inset,
+                           0 0 15px rgba(0, 0, 0, 0.02) inset;
+  --shadow-neumorphic-in: inset 2px 2px 4px rgba(0, 0, 0, 0.08), inset -2px -2px 4px rgba(255, 255, 255, 0.5),
+                          0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+                          0 0 25px rgba(0, 0, 0, 0.1) inset,
+                          0 0 40px rgba(0, 0, 0, 0.05) inset;
+  --shadow-neumorphic-soft: 2px 2px 4px rgba(0, 0, 0, 0.06), -2px -2px 4px rgba(255, 255, 255, 0.4),
+                            0 0 0 1px rgba(0, 0, 0, 0.01) inset,
+                            0 0 25px rgba(255, 255, 255, 0.3) inset,
+                            0 0 12px rgba(0, 0, 0, 0.015) inset;
+  --shadow-neumorphic-pressed: inset 2px 2px 5px rgba(0, 0, 0, 0.12), inset -2px -2px 5px rgba(255, 255, 255, 0.3),
+                                0 0 0 1px rgba(0, 0, 0, 0.04) inset,
+                                0 0 35px rgba(0, 0, 0, 0.12) inset,
+                                0 0 20px rgba(0, 0, 0, 0.06) inset;
   
   /* Стандартные тени для совместимости */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -56,11 +68,23 @@
   --accent-hover: #FFC700;
   --danger-color: #EF4444;
   
-  /* Минималистичные неоморфные тени для темного фона без свечения */
-  --shadow-neumorphic-out: 2px 2px 4px rgba(0, 0, 0, 0.3), -2px -2px 4px rgba(255, 255, 255, 0.02);
-  --shadow-neumorphic-in: inset 0 0 12px rgba(0, 0, 0, 0.4), inset 0 0 24px rgba(0, 0, 0, 0.2);
-  --shadow-neumorphic-soft: 2px 2px 4px rgba(0, 0, 0, 0.25);
-  --shadow-neumorphic-pressed: inset 0 0 15px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(0, 0, 0, 0.3);
+  /* Менее выраженный неоморфизм для темного фона с акцентом на центр */
+  --shadow-neumorphic-out: 2px 2px 5px rgba(0, 0, 0, 0.35), -2px -2px 5px rgba(255, 255, 255, 0.03),
+                           0 0 0 1px rgba(0, 0, 0, 0.08) inset,
+                           0 0 30px rgba(255, 255, 255, 0.02) inset,
+                           0 0 15px rgba(0, 0, 0, 0.1) inset;
+  --shadow-neumorphic-in: inset 2px 2px 4px rgba(0, 0, 0, 0.35), inset -2px -2px 4px rgba(255, 255, 255, 0.03),
+                          0 0 0 1px rgba(255, 255, 255, 0.015) inset,
+                          0 0 25px rgba(0, 0, 0, 0.25) inset,
+                          0 0 40px rgba(0, 0, 0, 0.15) inset;
+  --shadow-neumorphic-soft: 2px 2px 4px rgba(0, 0, 0, 0.25), -2px -2px 4px rgba(255, 255, 255, 0.025),
+                            0 0 0 1px rgba(0, 0, 0, 0.06) inset,
+                            0 0 25px rgba(255, 255, 255, 0.015) inset,
+                            0 0 12px rgba(0, 0, 0, 0.08) inset;
+  --shadow-neumorphic-pressed: inset 2px 2px 5px rgba(0, 0, 0, 0.45), inset -2px -2px 5px rgba(255, 255, 255, 0.015),
+                               0 0 0 1px rgba(0, 0, 0, 0.12) inset,
+                               0 0 35px rgba(0, 0, 0, 0.3) inset,
+                               0 0 20px rgba(0, 0, 0, 0.2) inset;
   
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.3);
